@@ -94,13 +94,12 @@ const verifier_victoire = function (nbEssais) {
 
     // Révéler le mot à trouver entièrement
     motATrouverTag.textContent = motATrouver;
-    return;
+    return;  // avoid awkwardness
   }
 
   if (!motATrouverTag.textContent.includes('_')) {
     desactiver_boutons();
     ajouter_message_final('victoire');
-    return;
   }
 }
 
