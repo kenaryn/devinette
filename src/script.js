@@ -5,9 +5,10 @@ import { dico } from './dico.js';
 let indexAleatoire = 0;
 let motATrouver = '';
 const resetButton = document.getElementById('reset');
+let motATrouverTag = document.getElementById('mot_a_trouver');
 
 const reveler_lettre = function(lettre) {
-  let motDansDom = document.getElementById('mot_a_trouver').textContent.split('');
+  let motDansDom = motATrouverTag.textContent.split('');
 
   // chercher si la lettre cliquée est trouvée dans le mot
   for (let i = 0; i < motATrouver.length; i++) {
@@ -16,7 +17,7 @@ const reveler_lettre = function(lettre) {
     }
   }
   // assigner cette lettre cliquée au mot à trouver pour le (re)construire
-  document.getElementById('mot_a_trouver').textContent = motDansDom.join('');
+  motATrouverTag.textContent = motDansDom.join('');
 }
 
 /**
@@ -51,7 +52,7 @@ const creer_mot_a_trouver = function () {
 }
 
 const masquer_mot = function() {
-  document.getElementById('mot_a_trouver').textContent = motATrouver.replace(/\S/g, '_');
+  motATrouverTag.textContent = motATrouver.replace(/\S/g, '_');
 }
 
 const init = function () {
@@ -92,11 +93,11 @@ const verifier_victoire = function (nbEssais) {
     ajouter_message_final('defaite');
 
     // Révéler le mot à trouver entièrement
-    document.getElementById('mot_a_trouver').textContent = motATrouver;
+    motATrouverTag.textContent = motATrouver;
     return;
   }
 
-  if (!document.getElementById('mot_a_trouver').textContent.includes('_')) {
+  if (!motATrouverTag.textContent.includes('_')) {
     desactiver_boutons();
     ajouter_message_final('victoire');
     return;
